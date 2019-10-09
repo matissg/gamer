@@ -1,0 +1,80 @@
+<p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>Name:</strong>
+    <%= @tournament.name %>
+  </p>
+
+  <p>
+    <%= link_to 'Edit', edit_tournament_path(@tournament) %> |
+    <%= link_to 'Back', tournaments_path %> |
+    <% if !@tournament.winner.present? %>
+      <%= link_to 'Generate Results', tournament_results_path(@tournament.id), method: :post, remote: true, style: "background-color: gold" %>
+    <% else %>
+      <%= link_to 'Results', tournament_results_path(@tournament.id), style: "background-color: gold" %>
+    <% end %>
+  </p>
+
+  <table border="0" cellpadding="0" cellspacing="0" style="width:50%;float:left">
+    <thead>
+      <tr>
+        <th></th>
+        <th><h3>Division A</h3></th>
+        <% @divisions['A'].each do |team| %>
+          <th class="vertical"><div class="vertical"><%= team[1] %></div></th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @divisions['A'].each.with_index do |team, index| %>
+        <tr>
+          <td><%= index + 1 %></td>
+          <td><%= team[1] %></td>
+          <% @divisions['A'].each.with_index do |item, oponent_index| %>
+            <% if index == oponent_index %>
+            <td style="text-align: center; vertical-align: middle;"><strong>--X--<strong></td>
+            <% else %>
+            <td>
+              <% if index > oponent_index %>
+                <%= index + 1 %> vs. <%= oponent_index + 1 %>
+              <% else %>
+              <% end %>
+            </td>
+            <% end %>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <table border="0" cellpadding="0" cellspacing="0" style="width:50%;float:left">
+    <thead>
+      <tr>
+        <th><h3>Division B</h3></th>
+        <% @divisions['B'].each do |team| %>
+          <th class="vertical"><div class="vertical"><%= team[1] %></div></th>
+        <% end %>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @divisions['B'].each.with_index do |team, index| %>
+        <tr>
+          <td><%= team[1] %></td>
+          <% @divisions['B'].each.with_index do |item, oponent_index| %>
+            <% if index == oponent_index %>
+            <td style="text-align: center; vertical-align: middle;"><strong>--X--<strong></td>
+            <% else %>
+            <td>
+              <% if index > oponent_index %>
+                <%= index + 1 %> vs. <%= oponent_index + 1 %>
+              <% else %>
+              <% end %>
+            </td>
+            <% end %>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>

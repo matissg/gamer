@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+
+# Division A
+<% 8.times do |n| %>
+tournament_team_<%= n %>:
+  tournament: first
+  team: <%= "team_#{n}" %>
+  division: <%= "A" %>
+<% end %>
+# Division B
+<% 8.times do |n| %>
+tournament_team_<%= (n + 8) %>:
+  tournament: first
+  team: <%= "team_#{(n + 8)}" %>
+  division: <%= "B" %>
+<% end %>

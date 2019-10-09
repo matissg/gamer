@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>Name:</strong>
+    <%= tournament.name %>
+  </p>
+  <p>
+    <%= link_to 'Back', tournament_path(tournament.id) %>
+  </p>
+  <!-- Division A ------------------------------------------------------------->
+  <div style="width:33%;float:left">
+    <h3>Division A</h3>
+    <% results['A'].each do |item| %>
+      <p>
+        <%= item[0] %> <strong><%= item[2] %></strong> : <strong><%= item[3] %></strong> <%= item[1] %>
+      </p>
+    <% end %>
+  </div>
+  <!-- Division B ------------------------------------------------------------->
+  <div style="width:33%;float:left">
+    <h3>Division B</h3>
+    <% results['B'].each do |item| %>
+      <p>
+        <%= item[0] %> <strong><%= item[2] %></strong> : <strong><%= item[3] %></strong> <%= item[1] %>
+      </p>
+    <% end %>
+  </div>
+
+  <!-- Quarter Finals --------------------------------------------------------->
+  <div style="width:25%;float:left">
+    <h3>Quarter Finals</h3>
+    <% results['quarter'].each do |item| %>
+      <p>
+        <%= item[0] %> <strong><%= item[2] %></strong> : <strong><%= item[3] %></strong> <%= item[1] %>
+      </p>
+    <% end %>
+  </div>
+  <!-- Semi Finals ------------------------------------------------------------>
+  <div style="width:25%;float:left">
+    <h3>Semi Finals</h3>
+    <% results['semi'].each do |item| %>
+      <p>
+        <%= item[0] %> <strong><%= item[2] %></strong> : <strong><%= item[3] %></strong> <%= item[1] %>
+      </p>
+    <% end %>
+  </div>
+  <!-- Finals ----------------------------------------------------------------->
+  <div style="width:25%;float:left">
+    <h3>Final</h3>
+    <% results['final'].each do |item| %>
+      <p>
+        <%= item[0] %> <strong><%= item[2] %></strong> : <strong><%= item[3] %></strong> <%= item[1] %>
+      </p>
+    <% end %>
+  </div>
+  <!-- The Winner ------------------------------------------------------------->
+  <div style="width:25%;float:left">
+    <h3>The winner is </h3>
+    <h3 style="color:red"><%= winner %></h3>
+  </div>
